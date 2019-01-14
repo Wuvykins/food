@@ -19,5 +19,44 @@ $f3->route('GET /', function() {
     echo $view->render('views/home.html');
 });
 
+//Define a breakfast route
+$f3->route('GET /breakfast', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/breakfast.html');
+});
+//create a lunch route
+$f3->route('GET /lunch', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/lunch.html');
+});
+//Define a breakfast/pancakes route
+$f3->route('GET /breakfast/pancakes', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/pancakes.html');
+});
+//Define a dinner route
+$f3->route('GET /dinner', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/dinner.html');
+});
+
+//pizza
+$f3->route('GET /dinner/pizza', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/pizza.html');
+});
+
+//steak
+$f3->route('GET /dinner/steak', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/steak.html');
+});
+
+//rolls
+$f3->route('GET /dinner/rolls', function(){ //get method is the default to go to a root
+    $view = new View();
+    echo $view->render('views/rolls.html');
+});
+
 //Run fat free
 $f3->run();
