@@ -13,6 +13,30 @@ $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 
 //define a default route
+$f3->route('GET /', function($f3) {
+    //save variables
+    $f3->set('username', 'jshmo');
+    $f3->set('password', sha1('Password01'));
+    $f3->set('title', 'Working with Templates');
+    $f3->set('temp', '67');
+    $f3->set('radius', '10');
+    $f3->set('fruits', array('apple', 'orange', 'banana'));
+    $f3->set('temp', '67');
+    $f3->set('links',array('Google'=>"http://www.google.com",
+        'fox'=>"http://www.fox.com"));
+    $f3->set('desserts',array('chocolate'=>"Chocolate Mousse",
+        'vanilla'=>"Vanilla Custard",'strawberry'=>"Strawberry Shortcake"));
+
+
+    //load template
+    $template = new Template();
+    echo $template->render('views/info.html');
+
+    //alternate syntax
+    //echo Template::instance() ->render('views/info.html');
+});
+/*
+//define a default route
 $f3->route('GET /', function() {
     //echo '<h1>my fav foods</h1>';
     $view = new View();
@@ -59,13 +83,14 @@ $f3->route('GET /dinner/rolls', function(){ //get method is the default to go to
 });
 
 //define a route with a parameter
-$f3->route('Get /@food', function($f3, $params)
+$f3->route('GET /@food', function($f3, $params)
 {
     print_r($params);
     echo "<h3>I like" . $params['food'] . "</h3>";
 });
 
-$f3->route('Get /@meal/@food', function($f3, $params)
+//define a route with multiple parameters
+$f3->route('GET /@meal/@food', function($f3, $params)
 {
     print_r($params);
     $validMeals = ['breakfast', 'lunch', 'dinner'];
@@ -88,7 +113,7 @@ $f3->route('Get /@meal/@food', function($f3, $params)
 });
 
 //define a route to display order form
-$f3->route('Get /order', function()
+$f3->route('GET /order', function()
 {
     $view = new View();
     echo $view->render('views/form1.html');
@@ -114,7 +139,7 @@ $f3->route('POST /order-process', function($f3)
 
 });
 
-$f3->route('Get /dessert/@param', function($f3, $params)
+$f3->route('GET /dessert/@param', function($f3, $params)
 {
     $params = $params["params"];
     if ($params == "pie")
@@ -127,6 +152,7 @@ $f3->route('Get /dessert/@param', function($f3, $params)
     }
 
 });
+*/
 
 //Run fat free
 $f3->run();

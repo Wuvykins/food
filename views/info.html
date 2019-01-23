@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{@title}}</title>
+</head>
+<body>
+    <h1>{{@title}}</h1>
+    <p>User logged in as {{strtoupper(@username)}} using {{@password}}</p>
+    <p>Fahrenheit: {{@temp}} degrees</p>
+    <p>Celsius: {{round((@temp-32)*(5.9/9.0),2)}} degrees</p>
+    <p>Circumference {{2*3.14*(@radius)}}</p>
+
+    <!--for each loop -->
+    <repeat group="{{ @fruits }}" value="{{ @fruit }}">
+        <ul>
+            <li>{{trim(@fruit)}}</li>
+        </ul>
+    </repeat>
+
+    <!-- display a list of links-->
+    <h3>Links</h3>
+    <ul>
+
+    </ul>
+    <repeat group="{{ @links }}" value="{{ @link=>@url}}">
+        <ul>
+            <a href="{{@url}}">{{@link}} </a></li>
+        </ul>
+    </repeat>
+    <!-- dessert checkbox-->
+    <h3>Dessert Options</h3>
+    <repeat group="{{ @desserts }}" value="{{ @dessert=>@name}}">
+        <input type="checkbox" name="@desserts" value="@name">{{@name}}</br>
+    </repeat>
+
+</body>
+</html>
